@@ -22,8 +22,8 @@ jobs:
 
       - name: Go build test driver
         run: |
-          go build ./conformance_tests
+          go build ./conformance_tests -o test_driver
 
       - name: Help
         run: |
-          ./conformance_tests -help
+          ./test_driver -help
