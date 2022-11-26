@@ -27,3 +27,13 @@ jobs:
       - name: Help
         run: |
           ./test_driver -help
+
+      - name: Build conformance checker
+        working-directory: conformance
+        run: |
+          cmake -S . -B build
+          cmake --build build
+
+      - name: Run checker
+        run: |
+          ./conformance/build/src/bpf_conformance --test_file_directory ./conformance/tests --plugin_path ./test_driver
