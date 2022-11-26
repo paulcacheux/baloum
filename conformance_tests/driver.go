@@ -21,8 +21,6 @@ func main() {
 
 	memory := flag.Arg(0)
 
-	fmt.Println(*program, memory)
-
 	programByteCode, err := decode_hexa(*program)
 	if err != nil {
 		panic(err)
@@ -42,6 +40,7 @@ func main() {
 		Programs: map[string]*ebpf.ProgramSpec{
 			TEST_RUN_SECTION: {
 				Instructions: instructions,
+				SectionName:  TEST_RUN_SECTION,
 			},
 		},
 	}
